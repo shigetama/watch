@@ -1,0 +1,2 @@
+insert into gamecomments (game_id, body, user_id, photo_id) values ('31103', 'コメント', '1', '1');
+insert into photos (user_id, path) values ('1', '1527492707');

@@ -1,0 +1,152 @@
+
+.calendar_title {
+  color: black;
+  font-size: 50px;
+  -webkit-text-stroke: 2px #000;
+}
+.calendar_date{
+  color: black;
+  font-size: 30px;
+  -webkit-text-stroke: 0.5px #000;
+}
+.menu {
+  min-height:100vh;
+  background-color: #f7f7f7;
+}
+.side_menu {
+  background-color: #1479ff;
+  position: relative;
+  color: white;
+
+}
+
+.side_menu_item {
+  position: absolute;
+  width: 150px;
+  position: fixed;
+}
+
+.fa-calculator {
+  font-size: 50px;
+}
+.login_user {
+  font-size: 10px;
+}
+.menu_footer {
+  font-size: 10px;
+}
+
+.move_month {
+  padding-bottom: 30px;
+}
+.calendar {
+  margin: 10px;
+}
+.week_head .day {
+  text-align: center;
+  border-radius: 5px;
+  width: 80px;
+  margin: 2px;
+  border: 1px solid black;
+  height: 25px;
+}
+.week .day {
+  background: white;
+  opacity: 0.85;
+  border-radius: 5px;
+  margin: 2px;
+  border: 2px solid black;
+  width: 80px;
+  height: 80px;
+}
+
+.week .day:hover{
+	animation: daybul 0.70s linear infinite;
+}
+
+@keyframes daybul{
+	0%	{transform:rotate(0deg)	translate(0,0);}
+	12.5%	{transform:rotate(0.6deg)	translate(1px,-1px);}
+	25%	{transform:rotate(1.2deg)	translate(0px,1px);}
+	37.5%	{transform:rotate(0.6deg)	translate(-1px,0);}
+	50%	{transform:rotate(0deg)	translate(0,0);}
+	62.5%	{transform:rotate(-0.6deg)	translate(1px,0);}
+	75%	{transform:rotate(-1.2deg)	translate(0,1px);}
+	87.5%	{transform:rotate(-0.6deg)	translate(-1px,-1px);}
+	100%	{transform:rotate(0deg)	translate(0,0);}
+}
+.game_number {
+  margin-left: : 0px;
+  font-size: 15px;
+  text-align: center;
+}
+/* タブメニュー */
+.tab_bg_color {
+  background-color: rgba(255,255,255,0.9);;
+}
+.tab_font {
+  color: black;
+  font-weight: bold;
+}
+
+.to_date {
+   font-size:35px !important;
+}
+.date-icon {
+  font-size:35px !important;
+  margin-right: 5px;
+}
+.marker {
+  background-color: yellow;
+}
+
+.config_title {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-top: 3px solid #3498db;
+  background: -webkit-linear-gradient(top, #fff 0%, #f0f0f0 100%);
+  background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 1) inset;
+}
+
+.master_table {
+  font-size: 3px;
+}
+.master_table .zip_col {
+  width: 50px;
+}
+.master_table .address_col {
+  width: 100px;
+}
+
+.not_like {
+  color: #d6d7d8;
+  font-size: 25px;
+}
+.add_like {
+  color: red;
+  font-size: 25px;
+}
+.not_button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+        font-size: 25px;
+}
+.shadow	{
+/*box-shadow*/
+box-shadow: 5px 5px 10px #000;
+-webkit-box-shadow: 5px 5px 10px #000;
+-moz-box-shadow: 5px 5px 10px #000;
+/*ボックスのデザイン*/
+border:1px solid #ccc;
+text-align:center
+}
+/* map */
+#map{
+ 	width: 100%;
+ 	height: 300px;
+}
