@@ -11,7 +11,6 @@
           </div>
           <div class="search_games float-right">
             <btn id="game_modal_btn" data-toggle="modal" data-target="#game_modal" class="btn btn-danger">Game登録</btn>
-
           </div>
           <div class="game_btn">
             <a href="/mypage" class="btn btn-success">マイページ</a>
@@ -108,12 +107,34 @@
                               <div class="form-group">
                                 <label for="number" class="control-label col-xs-2">Type</label>
                                     <div class="col-xs-3">
-                                      <select for="games" class="form-control" id="gametype" name="gametype">
+                                      <select for="games" class="select_gametype form-control" id="gametype" name="gametype">
                                         @forelse($gametypes as $gametype)
                                         <option value="{{ $gametype->id }}">{{ $gametype->name }}</option>
                                         @empty
                                         @endforelse
 
+                                      </select>
+                                    </div>
+                              </div>
+                              <div class="form-group form-row">
+
+                                  <div class="col-xs-3 col-md-6">
+                                    <label for="team1" class="control-label col-xs-2">Home Team</label>
+                                    <select class="select_team form-control" id="team1" name="team1">
+                                      @forelse($teams as $team)
+                                      <option data-select="{{ $team->gametype_id }}" value="{{ $team->id }}">{{ $team->name }}</option>
+                                      @empty
+                                      @endforelse
+                                    </select>
+                                  </div>
+
+                                    <div class="col-xs-3 col-md-6">
+                                      <label for="team2" class="control-label col-xs-2">Visiter Team</label>
+                                      <select class="select_team form-control" id="team2" name="team2">
+                                        @forelse($teams as $team)
+                                        <option data-select="{{ $team->gametype_id }}" value="{{ $team->id }}">{{ $team->name }}</option>
+                                        @empty
+                                        @endforelse
                                       </select>
                                     </div>
                               </div>
@@ -128,29 +149,6 @@
                                       </select>
                                     </div>
                               </div>
-                              <div class="form-group form-row">
-
-                                  <div class="col-xs-3 col-md-6">
-                                    <label for="team1" class="control-label col-xs-2">Home Team</label>
-                                    <select class="form-control" id="team1" name="team1">
-                                      @forelse($teams as $team)
-                                      <option value="{{ $team->id }}">{{ $team->name }}</option>
-                                      @empty
-                                      @endforelse
-                                    </select>
-                                  </div>
-
-                                    <div class="col-xs-3 col-md-6">
-                                      <label for="team2" class="control-label col-xs-2">Visiter Team</label>
-                                      <select class="form-control" id="team2" name="team2">
-                                        @forelse($teams as $team)
-                                        <option value="{{ $team->id }}">{{ $team->name }}</option>
-                                        @empty
-                                        @endforelse
-                                      </select>
-                                    </div>
-                              </div>
-
                               <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Game Derection</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="gamedirection" rows="3"></textarea>
@@ -170,6 +168,8 @@
 @endsection
 @section('script')
 <script>
+$(function() {
+
 // ゲーム詳細ウィンドウポップアップ
     $('.click').click(function(event) {
       const check = $(this).attr('data-check');
@@ -180,5 +180,31 @@
         window.open("/calendar/show_game?calendar_date="+c,"","width=780,height=300"+",left="+w+",top="+h);
       }
     })
+    // チーム選択
+  var $team = $('.select_team');
+  var original = $team.html();
+  $('.select_gametype').change(function() {
+    var val1 = $(this).val();
+
+    $team.html(original).find('option').each(function() {
+      var val2 = $(this).data('select');
+      if(val1 != val2) {
+        $(this).remove();
+      }
+    });
+  });
+// エラー時モーダル表示
+
+  $(window).on('load', () => {
+    if({{ $errors->has('gametitle') }}){
+      $('#game_modal_btn')[0].click();
+    }
+});
+
+
+});
+
+
+
 </script>
 @endsection
