@@ -27,7 +27,17 @@
             <div class="row text-center">
               @forelse($my_comments as $my_comment)
                 <div class="mb-3 col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                  <img src="/image/{{ $my_comment->photos()->path }}" alt="..." class="img-thumbnail">
+
+                  <div class="card" style="width: 18rem;">
+                    <img src="/image/{{ $my_comment->photos()->path }}" alt="..." class="card-img">
+                    <div class="card-body">
+                      <p class="card-text">
+                        {{ $my_comment->games()->title }}<i data-gameid="{{ $my_comment->games()->id }}" class="game_detail_btn ml-3 fas fa-info-circle"></i>
+                        <br>{{ date('Y/m/d', strtotime($my_comment->created_at)) }}
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               @empty
               @endforelse
@@ -162,6 +172,13 @@
       alert('ng');
     });
 
+  });
+// ゲーム詳細ポップアップ
+  $('.game_detail_btn').click(function() {
+    const game_id = $(this).attr('data-gameid');
+    const w = ( window.innerWidth-640 ) / 2;
+    const h = ( window.innerHeight-480 ) / 2;
+    window.open("/calendar/game_detail?gameid="+game_id,"","width=600,height=800"+",left="+w+",top="+h);
   });
 </script>
 @endsection

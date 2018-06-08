@@ -44,7 +44,7 @@
     <script>
       $('.game_detail').click(function() {
         const gameid = $(this).attr('data-gameid');
-        window.location.href = "/calendar/game_detail?gameid="+gameid;
+        window.location.href = "/calender/game_detail?gameid="+gameid;
         window.resizeTo(600, 600);
       });
     </script>

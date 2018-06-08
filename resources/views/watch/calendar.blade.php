@@ -194,7 +194,6 @@ $(function() {
     });
   });
 // エラー時モーダル表示
-
   $(window).on('load', () => {
     if({{ $errors->has('gametitle') }}){
       $('#game_modal_btn')[0].click();

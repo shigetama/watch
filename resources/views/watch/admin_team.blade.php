@@ -10,11 +10,11 @@
 </div>
 <div class="m-3">
   <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget">
       ＋
     </button>
   </p>
-  <div class="collapse" id="collapseExample">
+  <div class="collapse" id="collapseTarget">
     <div class="card card-body">
       <form class="" action="{{ action('AdminController@create_team') }}" method="post">
         {{ csrf_field() }}
