@@ -12,7 +12,7 @@ class CommenttypeTableSeeder extends Seeder
      */
     public function run()
     {
-      $commenttype = new Commenttype(['comment_status' => 'TEST']);
+      $commenttype = new Commenttype(['comment_status' => '通常']);
       $commenttype->save();
 
     }

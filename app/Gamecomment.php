@@ -39,4 +39,8 @@ class Gamecomment extends Model
                   ->where('user_id', Auth::user()->id)->first();
     return $like;
   }
+  public function hasLikeCount() {
+
+    return count(Like::where('comment_id', $this->id)->get());
+  }
 }

@@ -5,7 +5,6 @@
 
 @endsection
 @section('content')
-
           <div class="main_header ">
             <h1 class="text-center calendar_title">Calendar</h1>
           </div>
@@ -193,9 +192,11 @@ $(function() {
       }
     });
   });
+
 // エラー時モーダル表示
   $(window).on('load', () => {
-    if({{ $errors->has('gametitle') }}){
+    var error = {{ '0'.$errors->has('gametitle') }};
+    if(error != '0' ){
       $('#game_modal_btn')[0].click();
     }
 });

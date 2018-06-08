@@ -50,12 +50,15 @@
               <hr>
               <p class="card-text comment_body">{{ $show_comment->body }}</p>
               <hr>
-              <a href="#" class="btn btn-sm btn-primary">save</a>
-              @if($show_comment->hasLike())
-              <i data-comment="{{ $show_comment->id }}" class="like_btn add_like fas fa-star"></i>
-              @else
-              <i data-comment="{{ $show_comment->id }}" class="like_btn not_like fas fa-star"></i>
-              @endif
+              <!-- <a href="#" class="btn btn-sm btn-primary">save</a> -->
+              <button class="btn btn-primary btn-sm" type="button" name="button">
+                @if($show_comment->hasLike())
+                <i data-comment="{{ $show_comment->id }}" class="like_btn add_like fas fa-star"></i>
+                @else
+                <i data-comment="{{ $show_comment->id }}" class="like_btn not_like fas fa-star"></i>
+                @endif
+                <span class="like_count">{{ $show_comment->hasLikeCount() }}</span>
+              </button>
                 @if($now->diffInHours($show_comment->created_at) >= 24)
                   <span class="float-right"> {{ $show_comment->created_at->format('m/d') }} </span>
                 @else
@@ -95,6 +98,8 @@
   // いいね
   $('.like_btn').click(function() {
     let comment = $(this).attr('data-comment');
+    let likes_count = $(this).next('span').text();
+
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -111,8 +116,10 @@
     .done( (data) => {
       if(data == 1){
         $(this).removeClass('not_like').addClass('add_like');
+        $(this).next().text(Number(likes_count) + 1);
       }else{
         $(this).removeClass('add_like').addClass('not_like');
+        $(this).next().text(Number(likes_count) - 1);
       }
     })
     .fail( (data) => {
@@ -120,7 +127,6 @@
     });
   })
 })();
-
 
 </script>
 @endsection

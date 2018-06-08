@@ -33,7 +33,7 @@
                     <div class="card-body">
                       <p class="card-text">
                         {{ $my_comment->games()->title }}<i data-gameid="{{ $my_comment->games()->id }}" class="game_detail_btn ml-3 fas fa-info-circle"></i>
-                        <br>{{ date('Y/m/d', strtotime($my_comment->created_at)) }}
+                        <br>{{ date('Y.m.d', strtotime($my_comment->created_at)) }}
                       </p>
                     </div>
                   </div>
@@ -132,6 +132,7 @@
 @endsection
 @section('script')
 <script>
+// フォロワー一覧　フォロー解除
   $('.follow_remove').click(function() {
     const user_id = $(this).attr('data-comment');
     $.ajax({
@@ -141,19 +142,16 @@
     })
     .done( (data) => {
       if(data["check"] == 1){
-
       }else{
-
         $(this).parents('.delete_follow').replaceWith('<div class="mb-3 card"><div class="card-header text-center">フォローを解除しました</div></div>');
-      }
 
+      }
     })
     .fail( (data) => {
       alert('ng');
     });
-
   });
-
+// フォロー
   $('.follow_remove_add').click(function() {
     const comment = $(this).attr('data-comment');
     $.ajax({
