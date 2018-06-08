@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
       $this->call(CommenttypeTableSeeder::class);
       $this->call(LargeUserTableSeeder::class);
       $this->call(GameTableSeeder::class);
-
+      $this->call(FollowerTableSeeder::class);
+      $this->call(GamecommentTableSeeder::class);
 
     }
 }

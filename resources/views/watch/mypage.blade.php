@@ -28,7 +28,7 @@
               @forelse($my_comments as $my_comment)
                 <div class="mb-3 col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
-                  <div class="card" style="width: 18rem;">
+                  <div class="shadow card" style="width: 18rem;">
                     <img src="/image/{{ $my_comment->photos()->path }}" alt="..." class="card-img">
                     <div class="card-body">
                       <p class="card-text">
@@ -66,7 +66,7 @@
 
               @forelse($follow_tables as $follow_table)
               <div class="user_box">
-                <div class="delete_follow mb-3 card">
+                <div class="shadow delete_follow mb-3 card">
                   <div class="card-header">
                     {{$follow_table->own_follow()->first_name}}
                     {{$follow_table->own_follow()->last_name}}
@@ -95,7 +95,7 @@
 
               @forelse($follower_tables as $follower_table)
               <div class="user_box">
-                <div class="delete_follow mb-3 card">
+                <div class="shadow delete_follow mb-3 card">
                   <div class="card-header">
                     {{$follower_table->own_follower()->first_name}}
                     {{$follower_table->own_follower()->last_name}}

@@ -50,9 +50,9 @@
             <div class="week row">
             <?php $cnt=0; ?>
             @foreach($calendars as $calendar)
+
               <div data-check="{{ $games->where('game_date', $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar))->count() }}"
-                  data-calendar="{{ $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar) }}"
-                  class="click day col">
+                  data-calendar="{{ $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar) }}" class="click day col">
                 <div class="">
                   {{ $calendar }}
                   @if($year == $now->year && $month == $now->month && $calendar == $now->day)
@@ -60,19 +60,21 @@
                   @endif
                 </div>
                 @if($games->where('game_date', $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar))->count())
-                <div class="rounded bg-warning game_number">
-                   {{ $games->where('game_date', $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar))->count() }}games</div>
+                  <div class="rounded bg-warning game_number">
+                   {{ $games->where('game_date', $year.'-'.sprintf('%02d', $month).'-'.sprintf('%02d', $calendar))->count() }}games
+                  </div>
                 @endif
               </div>
-            <?php $cnt++ ?>
-              @if($cnt % 7 == 0)
-                </div>
-                <div class="week row">
-                <?php $cnt = 0; ?>
-              @endif
-            @endforeach
 
-          </div>
+
+                <?php $cnt++ ?>
+                @if($cnt % 7 == 0)
+              </div>
+              <div class="week row">
+                <?php $cnt = 0; ?>
+                @endif
+            @endforeach
+            </div>
 
           <div class="modal" id="game_modal" tabindex="-1">
             <div class="modal-dialog modal-lg">

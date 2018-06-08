@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Team;
 use App\Gametypw;
 use App\Gamecomment;
+use App\Follower;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -43,6 +45,11 @@ class User extends Authenticatable
     }
     public function comment() {
       return Gamecomment::where('user_id', $this->id)->get();
+    }
+    public function has_follow() {
+      return Follower::where('follow_id', Auth::user())
+                      ->where('follower_id', $this->id)
+                      ->first();
     }
 
 }

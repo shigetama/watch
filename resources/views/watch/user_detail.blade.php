@@ -11,7 +11,11 @@
     <img class="m-3" src="/image/{{ $gamecomments->random()->photos()->path }}" alt="..." class="img-thumbnail">
     <p>
       @if($user->id !== $now_user->id )
-      <button data-user_id="{{ $user->id }}" class="user-{{$user->id}} follow_btn btn btn-primary" type="button" name="button">フォロー</button>
+        @if($user->has_follow())
+          <button data-user_id="{{ $user->id }}" class="user-{{$user->id}} follow_btn btn btn-primary" type="button" name="button">フォローする</button>
+        @else
+          <button data-user_id="{{ $user->id }}" class="user-{{$user->id}} follow_btn btn btn-danger" type="button" name="button">フォロー中</button>
+        @endif
       @endif
     </p>
     <div class="container">

@@ -42,7 +42,7 @@
     <div class="row">
 
       @forelse($show_comments as $show_comment)
-        <div class="mb-2 col-sm-6 col-sm-4 col-lg-3">
+        <div class="mb-4 col-sm-6 col-sm-4 col-lg-3">
           <div class="shadow card" style="">
             <img class="card-img-top" src="/image/{{ $show_comment->photos()->path }}" alt="Card image cap">
             <div class="card-body">
@@ -64,7 +64,7 @@
                 @else
                 <span class="float-right">  {{ $now->diffInHours($show_comment->created_at) }}時間前  </span>
                 @endif
-              <h6 class="m-2 text-center">posted by
+              <h6 class="m-2 text-center">posted by <br>
                 <a href="{{ action('MypageController@user_detail', $show_comment->users()) }}" class="">
                     {{ $show_comment->users()->first_name }}
                 </a>
