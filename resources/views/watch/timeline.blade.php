@@ -89,9 +89,11 @@
     let w = {!! json_encode($key_word) !!};
       $('.comment_body').each(function(){
         const txt = $(this).html();
-        $(this).html(
-          txt.replace(new RegExp(w,"g"),'<span class="marker">'+w+'</span>')
-        );
+          if(w !== null){
+            $(this).html(
+                txt.replace(new RegExp(w,"g"),'<span class="marker">'+w+'</span>')
+            );
+          }
       });
   }
 
