@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
       $this->call(GameTableSeeder::class);
       $this->call(FollowerTableSeeder::class);
       $this->call(GamecommentTableSeeder::class);
-      $htis->call(PhotoTableSeeder::class);
+      $this->call(PhotoTableSeeder::class);
 
     }
 }

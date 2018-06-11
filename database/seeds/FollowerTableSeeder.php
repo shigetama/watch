@@ -22,5 +22,14 @@ class FollowerTableSeeder extends Seeder
             $follower->save();
           }
         }
+        $users2 = User::get();
+        foreach($users2 as $user2){
+            if($user2->id != 1){
+            $follower = new Follower();
+            $follower->follow_id = $user2->id;
+            $follower->follower_id = 1;
+            $follower->save();
+          }
+        }
     }
 }

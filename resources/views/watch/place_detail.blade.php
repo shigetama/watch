@@ -18,7 +18,13 @@
                   {{ $place->address3 }}{{ $place->address4 }}
                 </p>
                 <p>
-                  自宅からの距離{{ $dist }}m
+                  自宅からの距離 約 <span class="h5">
+                    @if($dist > 10000)
+                    {{ round($dist, -3)/1000 }}</span> km
+                    @else
+                    {{ $dist }}</span> m
+                    @endif
+
                 </p>
               </div>
             </div>
